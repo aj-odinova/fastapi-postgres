@@ -1,0 +1,8 @@
+uwsgi
+fastapi[standard]
+uvicorn
+asyncpg
+databases
+python-dotenv
+jinja2
+python-multipart

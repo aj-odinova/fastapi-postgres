@@ -1,0 +1,22 @@
+services:
+  fastapi:
+    extends:
+      file: compose.yaml
+      service: fastapi
+    environment:
+      - DATABASE_URL=postgres://postgres:postgres@db:5432/postgres
+    volumes:
+      - ./fastapi:/app
+    depends_on:
+      - db
+    command: fastapi dev main.py --host 0.0.0.0
+
+  db:
+    extends:
+      file: compose.yaml
+      service: db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+
